@@ -1,15 +1,29 @@
-All configuration takes place in the main file
+# How It Works
 
-Websocket receives tokio::sync::broadcast::Sender, and the agent receives .. ::Receiver and sends messages to everyone who subscribes to it
+This system allows you to control your PC from an Android phone, using it as a remote gamepad.
 
-The virtual gamepad connects to the ViGEm driver, and from there the OS sees the gamepad's movements
+**System Architecture:**
 
-To connect to the server, I decided to make an Android application in Java in Android Studio. (Unfortunately, I connected Java to this project, but the Tauri tool is an incredible replacement in this regard. I didn't use it because I had no experience working with it).
+1.  **Mobile App (Client):**
+    *   Developed for Android using Tauri.
+    *   Displays a virtual gamepad with buttons and joysticks on the screen.
+    *   When any action is performed (button press, joystick movement), the app sends the data to the server in JSON format.
 
-![img.png](img.png)
+2.  **Virtual Gamepad (Agent on PC):**
+    *   This program runs on the target PC and is also a client of the server.
+    *   It constantly "listens" to the same broadcast channel.
+    *   When it receives data from the server, it translates and feeds these commands into the system using the **ViGEm** driver. This driver creates a fully functional virtual gamepad in the operating system, which is recognized by games and applications.
 
-The virtual joystick sends data from the gamepad to the server in JSON format whenever a button/trigger/stick is pressed.
 
-Today`s last day when i can make modifications for this project, so waiting for mentors feedback
+3.  **Server (PC):**
+    *   Has a WebSocket listener that accepts incoming connections from mobile apps.
+    *   Uses a broadcast mechanism: each new client that connects "subscribes" to a common channel.
+    *   Receives JSON messages from a client and relays them to all subscribed clients.
 
-Java`s code at virtual_joystick_java/app/src ...
+
+**Important Requirement:**
+For the virtual gamepad to work on Windows, you **must first download and install the ViGEm Bus Driver** from the official website:  
+https://vigembusdriver.com/
+
+**In Simple Terms:**
+Your phone sends gamepad commands to a server. The server acts as a dispatcher, relaying these commands to everyone who is listening. The agent program on your PC receives these commands and "presses" the corresponding buttons on a virtual gamepad that Windows can see. Games perceive this as if a physical gamepad was connected to the computer.
