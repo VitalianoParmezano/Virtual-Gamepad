@@ -31,9 +31,9 @@ pub mod virtual_gamepad {
             let client = Client::connect().expect("Failed to connect to ViGEmBus");
             let mut connector = Xbox360Wired::new(client, id);
 
-            println!("{:?}",connector.plugin());
+            println!("Plugin {:?}",connector.plugin());
 
-            println!("{:?}",connector.wait_ready());
+            println!("Connector {:?}",connector.wait_ready());
 
 
             let gamepad = vigem_client::XGamepad{
@@ -87,6 +87,7 @@ pub mod virtual_gamepad {
                     "RB" => self.gamepad.buttons.raw |= XButtons::RB,
                     "START" => self.gamepad.buttons.raw |= XButtons::START,
                     "BACK" => self.gamepad.buttons.raw |= XButtons::BACK,
+                    "SELECT" => self.gamepad.buttons.raw |= XButtons::GUIDE,
                     _ => {}
                 }
             }

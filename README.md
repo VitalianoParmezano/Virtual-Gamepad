@@ -23,8 +23,11 @@ Open terminal and run:
 
 ```bash
 # Launch the WebSocket server
-gamepad-server.exe
+./this_project/virtual_gamepad.exe)
 ```
+there this_project is the path where you clone git
+
+If everything is OK you`ll hear the sound of connection device
 
 ### Client Side (Android Phone)  
 1. **Download** and install the APK file on your Android device
