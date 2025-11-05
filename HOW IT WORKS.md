@@ -23,7 +23,6 @@ This system allows you to control your PC from an Android phone, using it as a r
 
 **Important Requirement:**
 For the virtual gamepad to work on Windows, you **must first download and install the ViGEm Bus Driver** from the official website:  
-https://vigembusdriver.com/
 
 **In Simple Terms:**
 Your phone sends gamepad commands to a server. The server acts as a dispatcher, relaying these commands to everyone who is listening. The agent program on your PC receives these commands and "presses" the corresponding buttons on a virtual gamepad that Windows can see. Games perceive this as if a physical gamepad was connected to the computer.
