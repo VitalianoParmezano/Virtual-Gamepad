@@ -1,6 +1,0 @@
-/target
-.idea/
-target/rust-analyzer/
-
-TauriGamePad/src-tauri/gen/android/keystore.properties
-
