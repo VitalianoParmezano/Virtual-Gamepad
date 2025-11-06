@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamepad Controller</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="/main.js" defer></script>
+</head>
+
+<body>
+    <!-- CONFIGURATION PAGE -->
+    <div id="configPage" class="config-page">
+        <h2>Gamepad Configuration</h2>
+
+        <!-- WebSocket connection settings -->
+        <input type="text" id="wsAddress" placeholder="ws://address:port" value="ws://192.168.0.106:9001">
+        <!-- <input type="number" id="sendRate" placeholder="Frequency (ms)" min="50" value="100"> -->
+
+        <!-- Connection status indicator -->
+        <div id="status" class="status disconnected">❌ Not Connected</div>
+
+        <!-- Action buttons -->
+        <button id="connectBtn">Connect</button>
+        <button id="openGamepadBtn">Open Gamepad</button>
+    </div>
+
+    <!-- GAMEPAD PAGE -->
+    <div id="gamepadPage" class="gamepad-page">
+        <div class="gamepad">
+            <!-- Left joystick -->
+            <div id="leftJoy" class="joystick">
+                <div class="stick" id="stickLeft"></div>
+            </div>
+
+            <!-- Right joystick -->
+            <div id="rightJoy" class="joystick">
+                <div class="stick" id="stickRight"></div>
+            </div>
+
+            <!-- D-pad in cross layout -->
+            <div id="dpad" class="grid">
+                <div></div>               <div class="button" id="UP">↑</div>        <div></div>
+                <div class="button" id="LEFT">←</div> <div></div>                  <div class="button" id="RIGHT">→</div>
+                <div></div>               <div class="button" id="DOWN">↓</div>      <div></div>
+            </div>
+
+            <!-- Face buttons in diamond layout -->
+            <div id="buttonsABXY" class="grid">
+                <div></div>               <div class="button" id="Y">Y</div>        <div></div>
+                <div class="button" id="X">X</div> <div></div>                   <div class="button" id="B">B</div>
+                <div></div>               <div class="button" id="A">A</div>       <div></div>
+            </div>
+
+            <!-- L1/L2 and R1/R2 triggers -->
+            <div id="leftButtons" class="verticalButtons">
+                <div class="trigger" id="LT">LT</div>
+                <div class="button" id="LB">LB</div>
+            </div>
+
+            <div id="rightButtons" class="verticalButtons">
+                <div class="trigger" id="RT">RT</div>
+                <div class="button" id="RB">RB</div>
+            </div>
+
+            <!-- Select/Home buttons in center -->
+            <div id="centerButtons" class="buttons">
+                <div class="button" id="BACK">Back</div>
+                <div class="button" id="START">Start</div>
+            </div>
+
+            <!-- Debug information fields -->
+            <!-- <p id="devField">1223</p>
+            <p id="js_debug">From Rust</p> -->
+            
+            <!-- Navigation button -->
+            <button id="backToConfigBtn">← Configuration</button>
+        </div>
+    </div>
+</body>
+</html>
